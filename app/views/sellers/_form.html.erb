@@ -1,0 +1,45 @@
+<%= form_with(model: seller, local: true) do |form| %>
+  <% if seller.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seller.errors.count, "error") %> prohibited this seller from being saved:</h2>
+
+      <ul>
+        <% seller.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product %>
+    <%= form.text_field :product %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+    
+    <fieldset class="rating">
+
+<legend>Please rate:</legend>
+
+<%=form.radio_button :ratinng, 5, :id => "star5" %><label for="star5" title="Excellent!">5 Stars</label>
+
+<%=form.radio_button :ratinng, 4, :id => "star4" %> <label for="star5" title="Good!">4 Stars</label>
+
+<%=form.radio_button :ratinng, 3, :id => "star3" %> <label for="star3" title="Average!">5 Stars</label>
+
+<%=form.radio_button :ratinng, 2, :id => "star2" %> <label for="star5" title="Poor!">2 Stars</label>
+
+<%=form.radio_button :ratinng, 1, :id => "star1" %> <label for="star1" title="Very Poor!">1 Stars</label>
+
+</fieldset>
+  </div>
+
+ 
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
